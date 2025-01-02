@@ -1,0 +1,20 @@
+name: WakaTime
+on:
+  push:
+    branches:
+      - main
+jobs:
+  wakatime_stats:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Generate WakaTime stats
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.wakatime.svg
+          token: NOT_NEEDED
+          base: ""
+          plugin_wakatime: yes
+          plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
+          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
