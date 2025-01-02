@@ -5,9 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   wakatime_stats:
-    runs-on: ubuntu-latest
-    environment: 
-      name: production
+    runs-on: ubuntu-latest  
     permissions:
       contents: write
     steps:
@@ -18,6 +16,6 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           base: ""
           plugin_wakatime: yes
-          plugin_wakatime_days: 10000
+          plugin_wakatime_days: 365
           plugin_wakatime_sections: time, projects, projects-graphs, languages, languages-graphs, editors, os
           plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}
